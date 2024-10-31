@@ -1,9 +1,11 @@
 #Para comentar en un archivo .feature se hace con este símbolo #
 #Esto es la descripción de la batería de test contenida en este archivo
 Feature: Login test suite
+
     Background:
         #Esto es equivalente al beforeEach
         Given I visit the url "https://www.saucedemo.com/"
+
     # Los Scenarios son los tests (lo que antes era "it")
     Scenario: Check the endpoint of login page
         Given I check that the url "eq" the endpoint "https://www.saucedemo.com/"
@@ -81,5 +83,6 @@ Feature: Login test suite
             | username        | password     | errorMessage                                                              |
             | standard_user   | User1234     | Epic sadface: Username and password do not match any user in this service |
             | locked_out_user | secret_sauce | Epic sadface: Sorry, this user has been locked out.                       |
+            |                 |              | Epic sadface: Username is required                                        |
             |                 | secret_sauce | Epic sadface: Username is required                                        |
             | standard_user   |              | Epic sadface: Password is required                                        |

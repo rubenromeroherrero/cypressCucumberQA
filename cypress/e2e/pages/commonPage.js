@@ -15,6 +15,7 @@ export class CommonPage {
     cy.url().should(includeProperty, endpoint);
   }
   typeOnInputByDataTestId(inputDataTestId, inputValue) {
+    //Analyze the value of the input when we want to use ""
     if (inputValue) {
       cy.get(`[data-test=${inputDataTestId}]`)
         .should("have.value", "")
