@@ -15,11 +15,13 @@ export class CommonPage {
     cy.url().should(includeProperty, endpoint);
   }
   typeOnInputByDataTestId(inputDataTestId, inputValue) {
-    cy.get(`[data-test=${inputDataTestId}]`)
-      .should("have.value", "")
-      .clear()
-      .type(inputValue)
-      .should("have.value", inputValue);
+    if (inputValue) {
+      cy.get(`[data-test=${inputDataTestId}]`)
+        .should("have.value", "")
+        .clear()
+        .type(inputValue)
+        .should("have.value", inputValue);
+    }
   }
   clickButtonByDataTestId(button) {
     cy.get(`[data-test=${button}]`).should("not.be.checked").click();
