@@ -35,6 +35,9 @@ When("I login with {string} user", (typeOfuser) => {
       case "error":
         loginPage.loginStandardUser(userDataName[3].username);
         break;
+      case "visual":
+        loginPage.loginStandardUser(userDataName[4].username);
+        break;
     }
   });
 });

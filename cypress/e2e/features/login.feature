@@ -62,3 +62,10 @@ Feature: Login test suite
         And I check that the "error" message is "Epic sadface: Password is required"
         Then I check that the url "not.contain" the endpoint "/inventory"
 
+    Scenario Outline: Login with two different users
+        Given I check that the url "not.contain" the endpoint "/inventory"
+        When I login with "<username>" user
+        Examples:
+            | username |
+            | standard |
+            | visual   |
