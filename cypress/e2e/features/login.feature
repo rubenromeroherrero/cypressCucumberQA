@@ -4,7 +4,7 @@ Feature: Login test suite
     Background:
         #Esto es equivalente al beforeEach
         Given I visit the url "https://www.saucedemo.com/"
-    Los Scenarios son los tests (lo que antes era "it")
+    #Los Scenarios son los tests (lo que antes era "it")
     Scenario: Check the endpoint of login page
         Given I check that the url "eq" the endpoint "https://www.saucedemo.com/"
         And I check that the url "not.contain" the endpoint "/inventory"
@@ -23,7 +23,7 @@ Feature: Login test suite
 
     Scenario: Login with invalid password
         Given I check that the url "not.contain" the endpoint "/inventory"
-        And I check that the "error" message is not shown
+        And I check that the "error" message "Epic sadface: Username and password do not match any user in this service" is not shown
         When I type in the input "username" the value "standard_user"
         And I type in the input "password" the value "User1234"
         And I click on the "login-button" button
@@ -32,7 +32,7 @@ Feature: Login test suite
 
     Scenario: Check error message for locked out user
         Given I check that the url "not.contain" the endpoint "/inventory"
-        And I check that the "error" message is not shown
+        And I check that the "error" message "Epic sadface: Sorry, this user has been locked out." is not shown
         When I login with "locked out" user
         And I click on the "login-button" button
         And I check that the "error" message is "Epic sadface: Sorry, this user has been locked out."
@@ -40,7 +40,7 @@ Feature: Login test suite
 
     Scenario: Check error message for empty fields
         Given I check that the url "not.contain" the endpoint "/inventory"
-        And I check that the "error" message is not shown
+        And I check that the "error" message "Epic sadface: Username is required" is not shown
         When I fill with "blank data" the fields of login
         And I click on the "login-button" button
         And I check that the "error" message is "Epic sadface: Username is required"
@@ -48,7 +48,7 @@ Feature: Login test suite
 
     Scenario: Check error message for empty username
         Given I check that the url "not.contain" the endpoint "/inventory"
-        And I check that the "error" message is not shown
+        And I check that the "error" message "Epic sadface: Username is required" is not shown
         When I fill with "empty username" the fields of login
         And I click on the "login-button" button
         And I check that the "error" message is "Epic sadface: Username is required"
@@ -56,7 +56,7 @@ Feature: Login test suite
 
     Scenario: Check error message for empty password
         Given I check that the url "not.contain" the endpoint "/inventory"
-        And I check that the "error" message is not shown
+        And I check that the "error" message "Epic sadface: Password is required" is not shown
         When I fill with "empty password" the fields of login
         And I click on the "login-button" button
         And I check that the "error" message is "Epic sadface: Password is required"

@@ -68,6 +68,12 @@ When(
   }
 );
 
-When("I check that the {string} message is not shown", (errorMessageId) => {
-  loginPage.checkTextOfAnErrorMessageIsNotShown(errorMessageId);
-});
+When(
+  "I check that the {string} message {string} is not shown",
+  (errorMessageId, notExpectedValueForErrorMessage) => {
+    loginPage.checkTextOfAnErrorMessageIsNotShown(
+      errorMessageId,
+      notExpectedValueForErrorMessage
+    );
+  }
+);
