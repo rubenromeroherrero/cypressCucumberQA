@@ -1,0 +1,21 @@
+{
+  "name": "cypresscucumberqa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+      "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+      "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+      "cypress": "^13.8.1",
+      "cypress-cucumber-steps": "^3.59.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step-definitions/*.js"
+  }
+}
