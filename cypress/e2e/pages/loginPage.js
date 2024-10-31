@@ -13,4 +13,8 @@ export class LoginPage extends CommonPage {
       expectedValueForErrorMessage
     );
   }
+
+  checkTextOfAnErrorMessageIsNotShown(errorMessageId) {
+    cy.get(`[data-test=${errorMessageId}]`).should("not.exist");
+  }
 }

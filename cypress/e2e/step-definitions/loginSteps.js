@@ -43,11 +43,9 @@ When("I fill with {string} the fields of login", (contentField) => {
   cy.fixture("typeOfUsers").as("userName");
   switch (contentField) {
     case "blank data":
-      commonPage.clickOnLogginButton();
       break;
     case "empty username":
       commonPage.typeOnInputByDataTestId("password", "secret_sauce");
-      commonPage.clickOnLogginButton();
       break;
     case "empty password":
       cy.get("@userName").then((userDataName) => {
@@ -55,7 +53,6 @@ When("I fill with {string} the fields of login", (contentField) => {
           "username",
           userDataName[0].username
         );
-        commonPage.clickOnLogginButton();
       });
       break;
   }
@@ -70,3 +67,7 @@ When(
     );
   }
 );
+
+When("I check that the {string} message is not shown", (errorMessageId) => {
+  loginPage.checkTextOfAnErrorMessageIsNotShown(errorMessageId);
+});
