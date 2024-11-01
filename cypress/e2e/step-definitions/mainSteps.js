@@ -28,3 +28,22 @@ When(
     );
   }
 );
+
+When("I check that the selected option is {string}", (defautOption) => {
+  mainPage.checkValueOfSelectedOption(defautOption);
+});
+
+When(
+  "I check that the {string} product in the list has the {string} {string}",
+  (orderProductId, productData, expectedValue) => {
+    mainPage.checkValueOfProductsList(
+      orderProductId,
+      productData,
+      expectedValue
+    );
+  }
+);
+
+When("I select the option {string}", (textValue) => {
+  mainPage.selectAnOptionByText(textValue);
+});
