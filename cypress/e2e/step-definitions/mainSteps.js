@@ -9,6 +9,7 @@ let mainPage = new MainPage();
 let commonPage = new CommonPage();
 
 Given("I check that the {string} item {string}", (elementId, existProperty) => {
+  //Si el elementId no existe use "does not exist" (como "existProperty"), cualquier otro valor se considerará que el elemento existe
   commonPage.checkIfAnElementExist(elementId, existProperty);
 });
 
@@ -18,6 +19,10 @@ When(
     mainPage.addProductToCartByPosition(productListPosition);
   }
 );
+
+When("I add to the cart the product with the name {string}", (productName) => {
+  mainPage.addProductToCartByName2(productName);
+});
 
 When(
   "I check that the {string} contains the number {int}",
@@ -31,10 +36,10 @@ When("I check that the selected option is {string}", (defautOption) => {
 });
 
 When(
-  "I check that the {string} product in the list has the {string} {string}",
-  (orderProductId, productData, expectedValue) => {
-    mainPage.checkValueOfProductInListByPosition(
-      orderProductId,
+  "I check that the {string} product in the list has the {string} attribute with the {string}",
+  (productListPosition, productData, expectedValue) => {
+    mainPage.checkValueOfProductByPositionOnTheList(
+      productListPosition,
       productData,
       expectedValue
     );

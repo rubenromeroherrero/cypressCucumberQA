@@ -22,17 +22,17 @@ Feature: Main test suite
 
     Scenario: Check the order after applying the filter by price
         Given I check that the selected option is "Name (A to Z)"
-        When I check that the "first" product in the list has the "name" "Sauce Labs Backpack"
-        And I check that the "first" product in the list has the "price" "29.99"
-        And I check that the "last" product in the list has the "name" "Test.allTheThings() T-Shirt (Red)"
-        And I check that the "last" product in the list has the "price" "15.99"
+        When I check that the "first" product in the list has the "name" attribute with the "Sauce Labs Backpack" value
+        When I check that the "first" product in the list has the "price" attribute with the "29.99" value
+        When I check that the "last" product in the list has the "name" attribute with the "Test.allTheThings() T-Shirt (Red)" value
+        When I check that the "last" product in the list has the "price" attribute with the "15.99" value
         And I select the option "Price (low to high)"
-        And I check that the "first" product in the list has the "name" "Sauce Labs Onesie"
-        And I check that the "first" product in the list has the "price" "7.99"
-        And I check that the "last" product in the list has the "name" "Sauce Labs Fleece Jacket"
-        And I check that the "last" product in the list has the "price" "49.99"
+        When I check that the "first" product in the list has the "name" attribute with the "Sauce Labs Onesie" value
+        When I check that the "first" product in the list has the "price" attribute with the "7.99" value
+        When I check that the "last" product in the list has the "name" attribute with the "Sauce Labs Fleece Jacket" value
+        When I check that the "last" product in the list has the "price" attribute with the "49.99" value
         And I select the option "Price (high to low)"
-        Then I check that the "first" product in the list has the "name" "Sauce Labs Fleece Jacket"
-        And I check that the "first" product in the list has the "price" "49.99"
-        And I check that the "last" product in the list has the "name" "Sauce Labs Onesie"
-        And I check that the "last" product in the list has the "price" "7.99"
+        When I check that the "first" product in the list has the "name" attribute with the "Sauce Labs Fleece Jacket" value
+        When I check that the "first" product in the list has the "price" attribute with the "49.99" value
+        When I check that the "last" product in the list has the "name" attribute with the "Sauce Labs Onesie" value
+        When I check that the "last" product in the list has the "price" attribute with the "7.99" value

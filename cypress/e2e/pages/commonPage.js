@@ -18,6 +18,10 @@ export class CommonPage {
     cy.url().should(includeProperty, endpoint);
   }
 
+  checkElementContent(elementDataTest, statusContent, content) {
+    cy.get(`[data-test="${elementDataTest}"]`).should(statusContent, content);
+  }
+
   checkIfAnElementExist(elementId, existProperty) {
     if (existProperty === "does not exist") {
       cy.get(`[data-test=${elementId}]`).should("not.exist");

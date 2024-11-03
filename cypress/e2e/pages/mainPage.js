@@ -56,8 +56,8 @@ export class MainPage {
       .should("contain", textValue);
   }
 
-  checkValueOfProductInListByPosition(
-    orderProductId,
+  checkValueOfProductByPositionOnTheList(
+    productListPosition,
     productData,
     expectedValue
   ) {
@@ -67,9 +67,9 @@ export class MainPage {
       third: 2,
       fourth: 3,
     };
-    let indexPosition = positionLogic[orderProductId];
+    let indexPosition = positionLogic[productListPosition];
 
-    if (orderProductId != "last") {
+    if (productListPosition != "last") {
       cy.get(`[data-test="inventory-item-${productData}"]`)
         .eq(indexPosition)
         .should("contain", expectedValue);
