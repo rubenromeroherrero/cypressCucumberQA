@@ -3,16 +3,41 @@ export class MainPage {
     cy.get('[data-test="shopping-cart-badge"]').should("not.exist");
   }
 
-  addAProductToCart(productListPosition) {
+  addProductToCartByPosition(productListPosition) {
+    const listOfAddToCartButtons = {
+      first: 0,
+      second: 1,
+      third: 2,
+      fourth: 3,
+    };
+    let indexAddTocartButtonPosition =
+      listOfAddToCartButtons[productListPosition];
+
     cy.get('[data-test="inventory-item"]')
       .find('button:contains("Add to cart")')
-      //How can i change the eq filter
-      .eq(productListPosition)
+      .eq(indexAddTocartButtonPosition)
       .should("be.visible")
       .click();
   }
 
-  checkCartIconBadgeContainNumber(elementId, numberShoppingCartProducts) {
+  addProductToCartByName(productName) {
+    cy.get('[data-test="inventory-item"]')
+      .contains(".btn btn_primary btn_small btn_inventory ", productName)
+      .click();
+  }
+
+  addProductToCartByName2(productName) {
+    let AddToCartByProductNameDataTest = productName
+      .toLowerCase()
+      .replace(/ /g, "-");
+    // La variable AddToCartByProductNameDataTest se crea para que el valor sea igual al data-test del botón Add to cart reemplazando los espacios por guiones y en minúsculas
+    cy.get('[data-test="inventory-item"]')
+      .find(`[data-test="add-to-cart-${AddToCartByProductNameDataTest}"]`)
+      .should("contain", "Add to cart")
+      .click();
+  }
+
+  checkNumberOfCartIconBadge(elementId, numberShoppingCartProducts) {
     cy.get(`[data-test=${elementId}]`)
       .should("be.visible")
       .and("contain", numberShoppingCartProducts);
@@ -31,21 +56,21 @@ export class MainPage {
       .should("contain", textValue);
   }
 
-  checkValueOfProductsList(orderProductId, productData, expectedValue) {
-    let indexPosition = 0;
-    if (orderProductId == "second") {
-      ++indexPosition;
-    } else if (orderProductId == "third") {
-      ++indexPosition;
-    } else if (orderProductId == "forth") {
-      ++indexPosition;
-    } else if (orderProductId == "five") {
-      ++indexPosition;
-    }
+  checkValueOfProductInListByPosition(
+    orderProductId,
+    productData,
+    expectedValue
+  ) {
+    const positionLogic = {
+      first: 0,
+      second: 1,
+      third: 2,
+      fourth: 3,
+    };
+    let indexPosition = positionLogic[orderProductId];
 
     if (orderProductId != "last") {
       cy.get(`[data-test="inventory-item-${productData}"]`)
-        //How can i change the eq filter
         .eq(indexPosition)
         .should("contain", expectedValue);
     } else {

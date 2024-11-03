@@ -19,9 +19,9 @@ export class CommonPage {
   }
 
   checkIfAnElementExist(elementId, existProperty) {
-    if (existProperty == "does not exist") {
+    if (existProperty === "does not exist") {
       cy.get(`[data-test=${elementId}]`).should("not.exist");
-    } else if ("exist" || "is visible") {
+    } else {
       cy.get(`[data-test=${elementId}]`).should("be.visible");
     }
   }
@@ -39,9 +39,5 @@ export class CommonPage {
 
   clickButtonByDataTestId(button) {
     cy.get(`[data-test=${button}]`).should("not.be.checked").click();
-  }
-
-  clickOnLogginButton() {
-    cy.get('[data-test="login-button"]').should("not.be.checked").click();
   }
 }

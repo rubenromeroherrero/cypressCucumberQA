@@ -13,19 +13,16 @@ Given("I check that the {string} item {string}", (elementId, existProperty) => {
 });
 
 When(
-  "I add to the cart the {int} product in the list",
+  "I add to the cart the {string} product in the list",
   (productListPosition) => {
-    mainPage.addAProductToCart(productListPosition);
+    mainPage.addProductToCartByPosition(productListPosition);
   }
 );
 
 When(
   "I check that the {string} contains the number {int}",
   (elementId, numberShoppingCartProducts) => {
-    mainPage.checkCartIconBadgeContainNumber(
-      elementId,
-      numberShoppingCartProducts
-    );
+    mainPage.checkNumberOfCartIconBadge(elementId, numberShoppingCartProducts);
   }
 );
 
@@ -36,7 +33,7 @@ When("I check that the selected option is {string}", (defautOption) => {
 When(
   "I check that the {string} product in the list has the {string} {string}",
   (orderProductId, productData, expectedValue) => {
-    mainPage.checkValueOfProductsList(
+    mainPage.checkValueOfProductInListByPosition(
       orderProductId,
       productData,
       expectedValue
