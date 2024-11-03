@@ -20,12 +20,14 @@ export class MainPage {
       .click();
   }
 
+  //Segunda manera de hacer click en botón a partir de nombre
   addProductToCartByName(productName) {
     cy.get('[data-test="inventory-item"]')
       .contains(".btn btn_primary btn_small btn_inventory ", productName)
       .click();
   }
 
+  //Tecerca manera de hacer click en botón a partir de data-test + name
   addProductToCartByName2(productName) {
     let AddToCartByProductNameDataTest = productName
       .toLowerCase()

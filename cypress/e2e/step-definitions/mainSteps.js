@@ -36,7 +36,7 @@ When("I check that the selected option is {string}", (defautOption) => {
 });
 
 When(
-  "I check that the {string} product in the list has the {string} attribute with the {string}",
+  "I check that the {string} product in the list has the {string} attribute with the {string} value",
   (productListPosition, productData, expectedValue) => {
     mainPage.checkValueOfProductByPositionOnTheList(
       productListPosition,
