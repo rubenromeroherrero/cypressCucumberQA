@@ -17,3 +17,8 @@ When(
     commonPage.checkEndpoint(includeProperty, endpoint);
   }
 );
+
+When("I check that the element {string} should {string} the content {string}",(elementDataTest, statusContent, content) => {
+  commonPage.checkElementContent(elementDataTest, statusContent, content)
+  // statusContent puede ser 'contain' o 'not.contain'
+});

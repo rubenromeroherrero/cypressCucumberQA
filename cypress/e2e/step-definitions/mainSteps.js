@@ -10,6 +10,11 @@ let commonPage = new CommonPage();
 
 Given("I check that the {string} item {string}", (elementId, existProperty) => {
   commonPage.checkIfAnElementExist(elementId, existProperty);
+  /* 
+  Este paso debería de estar en commonStep no en mainSteps
+  por otro lado, es una buena práctica para pasos que solo admiten un if y un else, indicar el valor del if como comentario, por ejemplo:
+  Si el elementId no existe use "does not exist" (como "existProperty"), cualquier otro valor se considerará que el elemento existe
+  */
 });
 
 When(
@@ -46,4 +51,15 @@ When(
 
 When("I select the option {string}", (textValue) => {
   mainPage.selectAnOptionByText(textValue);
+});
+
+
+When("I add to the cart the product with the name {string}",(productName) => {
+    mainPage.addProductToCartByName2(productName);
+});
+
+
+// Diferente step para comprobar valores de atributos de un producto por su posicion en la lista
+When("I check that the product {int} in the position list has the {string} attribute with the {string} value", (productListPosition, productData, expectedValue) => { 
+    mainPage.checkValueOfProductByPositionOnTheList(productListPosition, productData, expectedValue)
 });

@@ -19,9 +19,11 @@ export class CommonPage {
   }
 
   checkIfAnElementExist(elementId, existProperty) {
-    if (existProperty == "does not exist") {
+    // Usa 3 iguales siempre para garantizar que un string sea exactamente igual a otro
+    if (existProperty === "does not exist") {
       cy.get(`[data-test=${elementId}]`).should("not.exist");
-    } else if ("exist" || "is visible") {
+      // Si la funcion solo va a hacer comparar que no exista con que sea visible se puede hacer un if con condición y un else sin condición
+    } else {
       cy.get(`[data-test=${elementId}]`).should("be.visible");
     }
   }
@@ -43,5 +45,10 @@ export class CommonPage {
 
   clickOnLogginButton() {
     cy.get('[data-test="login-button"]').should("not.be.checked").click();
+  }
+
+  // Este step nos sirve para comprobar si un elemento contiene o no contiene una string
+  checkElementContent(elementDataTest, statusContent, content) {
+    cy.get(`[data-test="${elementDataTest}"]`).should(statusContent, content);
   }
 }
