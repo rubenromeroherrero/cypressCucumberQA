@@ -30,7 +30,7 @@ export class LoginPage extends CommonPage {
 
   openSession(typeOfuser) {
     cy.session("loginSession", () => {
-      cy.visit("https://www.saucedemo.com/"); //Visita la URL de inicio de sesión
+      cy.visit(Cypress.config("baseUrl")); //Visita la URL de inicio de sesión
       this.typeOnInputByDataTestId("username", typeOfuser);
       this.typeOnInputByDataTestId("password", "secret_sauce");
       this.clickOnLogginButton();
@@ -39,10 +39,10 @@ export class LoginPage extends CommonPage {
   }
 
   navigateToMain() {
-    cy.visit("https://www.saucedemo.com/inventory.html", {
+    cy.visit("/inventory.html", {
       failOnStatusCode: false,
     });
-    cy.url().should("include", "https://www.saucedemo.com/inventory.html");
+    cy.url().should("include", "/inventory.html");
   }
 
   loginKeepSession(typeOfuser) {

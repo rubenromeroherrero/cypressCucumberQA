@@ -24,5 +24,7 @@ module.exports = defineConfig({
     defaultCommandTimeout: 6000,
     //Esta configuración, es para cuando ejecutamos varios tests, solo guardamos el nº de test que queramos en memoria
     //numTestsKeptInMemory: 2,
+    baseUrl: "https://www.saucedemo.com",
+    baseUrlPRE: "https://www.saucedemo-pre.com",
   },
 });

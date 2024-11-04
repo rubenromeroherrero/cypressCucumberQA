@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-      "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
-      "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-      "cypress": "^13.8.1",
-      "cypress-cucumber-steps": "^3.59.0"
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "axe-core": "^4.10.2",
+    "cypress": "^13.15.1",
+    "cypress-axe": "^1.5.0",
+    "cypress-cucumber-steps": "^3.59.0"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/step-definitions/*.js"
