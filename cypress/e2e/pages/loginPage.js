@@ -7,6 +7,10 @@ export class LoginPage extends CommonPage {
     this.clickButtonByDataTestId("login-button");
   }
 
+  clickOnLogginButton() {
+    this.clickButtonByDataTestId("login-button");
+  }
+
   checkTextOfAnErrorMessage(errorMessageId, expectedValueForErrorMessage) {
     cy.get(`[data-test=${errorMessageId}]`).should(
       "contain",
@@ -22,5 +26,27 @@ export class LoginPage extends CommonPage {
       `[data-test=${errorMessageId}]`,
       notExpectedValueForErrorMessage
     ).should("not.exist");
+  }
+
+  openSession(typeOfuser) {
+    cy.session("loginSession", () => {
+      cy.visit("https://www.saucedemo.com/"); //Visita la URL de inicio de sesión
+      this.typeOnInputByDataTestId("username", typeOfuser);
+      this.typeOnInputByDataTestId("password", "secret_sauce");
+      this.clickOnLogginButton();
+      cy.url().should("eq", "https://www.saucedemo.com/inventory.html");
+    });
+  }
+
+  navigateToMain() {
+    cy.visit("https://www.saucedemo.com/inventory.html", {
+      failOnStatusCode: false,
+    });
+    cy.url().should("include", "https://www.saucedemo.com/inventory.html");
+  }
+
+  loginKeepSession(typeOfuser) {
+    this.openSession(typeOfuser);
+    this.navigateToMain();
   }
 }

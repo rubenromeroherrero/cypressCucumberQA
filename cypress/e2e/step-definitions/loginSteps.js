@@ -42,6 +42,29 @@ When("I login with {string} user", (typeOfuser) => {
   });
 });
 
+When("I login with keep session with {string} user", (typeOfuser) => {
+  cy.fixture("typeOfUsers").as("userName2");
+  cy.get("@userName2").then((userDataName2) => {
+    switch (typeOfuser) {
+      case "standard":
+        loginPage.loginKeepSession(userDataName2[0].username);
+        break;
+      case "locked out":
+        loginPage.loginKeepSession(userDataName2[1].username);
+        break;
+      case "problem":
+        loginPage.loginKeepSession(userDataName2[2].username);
+        break;
+      case "error":
+        loginPage.loginKeepSession(userDataName2[3].username);
+        break;
+      case "visual":
+        loginPage.loginKeepSession(userDataName2[4].username);
+        break;
+    }
+  });
+});
+
 When("I fill with {string} the fields of login", (contentField) => {
   cy.fixture("typeOfUsers").as("userName");
   switch (contentField) {
