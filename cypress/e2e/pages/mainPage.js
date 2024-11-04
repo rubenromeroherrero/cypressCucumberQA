@@ -5,6 +5,7 @@ const shoppingCartIcon = '[data-test="shopping-cart-badge"]';
 
 export class MainPage {
   checkCartIconBadgeNotExist() {
+    // cy.get(shoppingCartIcon, { timeout: 6000 }).should("not.exist");
     cy.get(shoppingCartIcon).should("not.exist");
   }
 
