@@ -3,7 +3,8 @@ Feature: Main test suite
     Background:
         Given I visit the url "https://www.saucedemo.com/"
         When I check that the url "not.include" the endpoint "/inventory"
-        Then I login with "standard" user
+        And I login with "standard" user
+        When I check that the url "include" the endpoint "/inventory"
 
     Scenario: Add the first product to the shopping cart
         Given I check that the "shopping-cart-link" item "exists"
