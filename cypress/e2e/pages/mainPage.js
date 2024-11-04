@@ -64,6 +64,10 @@ export class MainPage {
     this.getActiveSortingOption().should("contain", textValue);
   }
 
+  checkValueOfTheLastProductOnTheList(productData, expectedValue) {
+    cy.get(productData).last().should("contain", expectedValue);
+  }
+
   checkValueOfProductByPositionOnTheList(
     productListPosition,
     productData,
@@ -82,9 +86,10 @@ export class MainPage {
         .eq(indexPosition)
         .should("contain", expectedValue);
     } else {
-      cy.get(`[data-test="inventory-item-${productData}"]`)
-        .last()
-        .should("contain", expectedValue);
+      this.checkValueOfTheLastProductOnTheList(
+        `[data-test="inventory-item-${productData}"]`,
+        expectedValue
+      );
     }
   }
 }
