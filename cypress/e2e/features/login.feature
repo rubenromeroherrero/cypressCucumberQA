@@ -2,7 +2,7 @@
 #Esto es la descripción de la batería de test contenida en este archivo
 Feature: Login test suite
 
-    Background:
+    Background: Visit the url
         #Esto es equivalente al beforeEach
         Given I visit the url "https://www.saucedemo.com/"
 

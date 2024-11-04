@@ -44,4 +44,14 @@ export class CommonPage {
   clickButtonByDataTestId(button) {
     cy.get(`[data-test=${button}]`).should("not.be.checked").click();
   }
+
+  testAccesibilityInScreen() {
+    cy.injectAxe();
+    cy.checkA11y();
+  }
+
+  testAccesbilityOnElement(elementLocator) {
+    cy.injectAxe();
+    cy.checkA11y(elementLocator);
+  }
 }

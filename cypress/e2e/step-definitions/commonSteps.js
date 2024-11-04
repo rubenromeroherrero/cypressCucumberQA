@@ -17,3 +17,14 @@ When(
     commonPage.checkEndpoint(includeProperty, endpoint);
   }
 );
+
+Then("I test the accesibility in all the screen", () => {
+  commonPage.testAccesibilityInScreen();
+});
+
+Then(
+  "I test the accesibility on the element with locator {string}",
+  (elementLocator) => {
+    commonPage.testAccesbilityOnElement(elementLocator);
+  }
+);

@@ -1,6 +1,6 @@
 Feature: Main test suite
 
-    Background:
+    Background: Login with a type of user
         # Given I visit the url "https://www.saucedemo.com/"
         # When I check that the url "not.include" the endpoint "/inventory"
         # And I login with "standard" user
