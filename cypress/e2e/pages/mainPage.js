@@ -1,9 +1,13 @@
-///Locatos on Main Page
+import { CommonPage } from "./commonPage";
+
+///Locators on Main Page
 const sortContainer = '[data-test="product-sort-container"]';
 const productCard = '[data-test="inventory-item"]';
+const productCardDescription = '[data-test="inventory-item-description"]';
 const shoppingCartIcon = '[data-test="shopping-cart-badge"]';
+const addToCartButtonText = "Add to cart";
 
-export class MainPage {
+export class MainPage extends CommonPage {
   checkCartIconBadgeNotExist() {
     // cy.get(shoppingCartIcon, { timeout: 6000 }).should("not.exist");
     cy.get(shoppingCartIcon).should("not.exist");
@@ -26,23 +30,28 @@ export class MainPage {
       .click();
   }
 
-  //Segunda manera de hacer click en botón a partir de nombre
-  addProductToCartByName(productName) {
-    cy.get(productCard)
-      .contains(".btn btn_primary btn_small btn_inventory ", productName)
-      .click();
+  addProductToCartByText(productName) {
+    this.getAddToCartButtonAfterCheckTheProductName(productName).click();
   }
 
-  //Tecerca manera de hacer click en botón a partir de data-test + name
-  addProductToCartByName2(productName) {
-    let AddToCartByProductNameDataTest = productName
-      .toLowerCase()
-      .replace(/ /g, "-");
-    // La variable AddToCartByProductNameDataTest se crea para que el valor sea igual al data-test del botón Add to cart reemplazando los espacios por guiones y en minúsculas
-    cy.get(productCard)
-      .find(`[data-test="add-to-cart-${AddToCartByProductNameDataTest}"]`)
-      .should("contain", "Add to cart")
-      .click();
+  getAddToCartButtonAfterCheckTheProductName(productName) {
+    return cy
+      .get(productCard)
+      .contains(productCardDescription, productName)
+      .should("contain", productName)
+      .find(`button:contains(${addToCartButtonText})`)
+      .should("contain", addToCartButtonText);
+  }
+
+  navigateToProductItemDetailByNameProduct(content, productId) {
+    this.getProductIdByNameProduct(content, productId).click();
+  }
+
+  getProductIdByNameProduct(content, productId) {
+    return cy
+      .get(`[data-test="${productId}"]`)
+      .contains(content)
+      .should("contain", content);
   }
 
   checkNumberOfCartIconBadge(elementId, numberShoppingCartProducts) {

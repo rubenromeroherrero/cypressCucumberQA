@@ -19,11 +19,17 @@ export class CommonPage {
   }
 
   checkElementContent(elementDataTest, statusContent, content) {
-    cy.get(`[data-test="${elementDataTest}"]`).should(statusContent, content);
+    cy.get(`[data-test="${elementDataTest}"]`)
+      .contains(content)
+      .should(statusContent, content);
   }
 
   checkIfAnElementExist(elementId, existProperty) {
-    if (existProperty === "does not exist") {
+    if (
+      existProperty === "does not exist" ||
+      existProperty === "not exist" ||
+      existProperty === "not.exist"
+    ) {
       cy.get(`[data-test=${elementId}]`).should("not.exist");
     } else {
       cy.get(`[data-test=${elementId}]`).should("be.visible");

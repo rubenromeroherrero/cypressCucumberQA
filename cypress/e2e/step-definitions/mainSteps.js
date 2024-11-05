@@ -25,7 +25,7 @@ When("I add to the cart the product with the name {string}", (productName) => {
 });
 
 When(
-  "I check that the {string} contains the number {int}",
+  "I check that the {string} contains the quantity {int}",
   (elementId, numberShoppingCartProducts) => {
     mainPage.checkNumberOfCartIconBadge(elementId, numberShoppingCartProducts);
   }
@@ -48,4 +48,22 @@ When(
 
 When("I select the option {string}", (textValue) => {
   mainPage.selectAnOptionByText(textValue);
+});
+
+When(
+  "I navigate to the {string} product detail through {string} link",
+  (content, productId) => {
+    mainPage.navigateToProductItemDetailByNameProduct(content, productId);
+  }
+);
+
+Given(
+  "I add to the shopping cart the {string} from Main page",
+  (productName) => {
+    mainPage.addProductToCartByText(productName);
+  }
+);
+
+When("I navigate to Shopping Cart page", () => {
+  commonPage.clickButtonByDataTestId("shopping-cart-link");
 });
