@@ -126,7 +126,7 @@ describe("Use GET method to get data from typicode", () => {
     });
   });
 
-  it.only("Check status, datatype and length of data response in /comments", () => {
+  it("Check status, datatype and length of data response in /comments", () => {
     cy.request({
       method: "GET",
       url: "https://jsonplaceholder.typicode.com/posts/1/comments",
@@ -141,6 +141,47 @@ describe("Use GET method to get data from typicode", () => {
           expect(comment.email).to.be.eq("Lew@alysha.tv");
         }
       });
+    });
+  });
+
+  // Formas diferentes de hacerlo
+  it("Checks email for id = 4 using find", () => {
+    cy.request({
+      method: "GET",
+      url: "https://jsonplaceholder.typicode.com/posts/1/comments",
+    }).should((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.be.an("array");
+      expect(response.body).to.have.length(5);
+      // Usando find para buscar un id en especifico
+
+      const id_4 = response.body.find((alias) => alias.id === 4);
+      expect(id_4).to.exist;
+      expect(id_4.email).to.be.a("string");
+      expect(id_4.email).to.eq("Lew@alysha.tv");
+      expect(id_4.email).to.contain("@");
+      expect(id_4.name).to.be.a("string");
+      expect(id_4.name).to.contain("alias");
+      expect(id_4.name).to.eq("alias odio sit");
+    });
+  });
+
+  it("Checks data for id = 4 using some", () => {
+    cy.request({
+      method: "GET",
+      url: "https://jsonplaceholder.typicode.com/posts/1/comments",
+    }).should((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.be.an("array");
+      expect(response.body).to.have.length(5);
+
+      // Buscar directamente sobre el id === 4 usando some (personalmente prefiero como tu lo has hecho o con find)
+      expect(
+        response.body.some(
+          ({ id, email, name }) =>
+            id === 4 && email === "Lew@alysha.tv" && name === "alias odio sit"
+        )
+      ).to.be.true;
     });
   });
 });
