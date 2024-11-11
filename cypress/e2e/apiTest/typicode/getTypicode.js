@@ -139,6 +139,7 @@ describe("Use GET method to get data from typicode", () => {
         if (comment.id === 4) {
           expect(comment.email).to.be.a("string");
           expect(comment.email).to.be.eq("Lew@alysha.tv");
+          expect(comment.email).to.be.contain("@");
         }
       });
     });
@@ -163,6 +164,17 @@ describe("Use GET method to get data from typicode", () => {
       expect(id_4.name).to.be.a("string");
       expect(id_4.name).to.contain("alias");
       expect(id_4.name).to.eq("alias odio sit");
+    });
+  });
+
+  it("get data from a typicode/post1/comments, check its status code, type of response body and assert over object with id 4", () => {
+    cy.request("/posts/1/comments").should((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.be.a("array");
+      expect(response.body).to.have.length(5);
+      response.body.filter((comment) => {
+        comment.id === 4 && expect(comment.email).to.eq("Lew@alysha.tv");
+      });
     });
   });
 
