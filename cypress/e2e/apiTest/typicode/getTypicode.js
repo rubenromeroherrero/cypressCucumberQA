@@ -226,6 +226,7 @@ describe("Use GET method to get data from typicode", () => {
   it("a 404 error is displayed when getting data from typicode/post1/comment", () => {
     cy.request({
       url: "https://jsonplaceholder.typicode.com/posts/1/comment",
+      //Se tiene que poner failOnStatusCode, para evitar que nos falle el test si da un error 4XX o 5XX y el test pase con la validación
       failOnStatusCode: false,
     }).should((response) => {
       expect(response.status).to.eq(404);
