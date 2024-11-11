@@ -196,4 +196,39 @@ describe("Use GET method to get data from typicode", () => {
       ).to.be.true;
     });
   });
+
+  it("get data from a typicode/post1, check its status code, type of response body and evaluates type of value", () => {
+    cy.request("https://jsonplaceholder.typicode.com/posts/1").should(
+      (response) => {
+        expect(response.status).to.eq(200);
+        expect(response.body).to.be.a("object");
+        Object.values(response.body).forEach((value) => {
+          // Comparar si los values de las key son string o un number
+          expect(typeof value === "number" || typeof value === "string").to.be
+            .true;
+        });
+        // Se puede comprobar en la misma aserción si es un string o un number además de comprobar el valor exacto que tiene
+        expect(response.body["title"])
+          .to.be.a("string")
+          .to.eq(
+            "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+          );
+        expect(response.body["userId"]).to.be.a("number").to.eq(1);
+        expect(response.body["body"])
+          .to.be.a("string")
+          .to.eq(
+            "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+          );
+      }
+    );
+  });
+
+  it("a 404 error is displayed when getting data from typicode/post1/comment", () => {
+    cy.request({
+      url: "https://jsonplaceholder.typicode.com/posts/1/comment",
+      failOnStatusCode: false,
+    }).should((response) => {
+      expect(response.status).to.eq(404);
+    });
+  });
 });
