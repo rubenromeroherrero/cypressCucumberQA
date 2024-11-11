@@ -84,24 +84,6 @@ describe("Use GET method to get data from typicode", () => {
     );
   });
 
-  //Ejemplo Juli
-  // it('check that the response fot the endpoint "/posts"  and include the keys userId, id, title, body ', () => {
-  //   cy.request("https://jsonplaceholder.typicode.com/posts").should(
-  //     (response) => {
-  //       response.body.forEach((array) => {
-  //         expect(array).to.include.all.keys(["userId", "id", "title", "body"]);
-  //       });
-  //       expect(response.body).to.include({
-  //         userId: 1,
-  //         id: 1,
-  //         title:
-  //           "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  //         body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-  //       });
-  //     }
-  //   );
-  // });
-
   //Exercise for 11/11/2024
   it("Check status, type of keys and the value of keys in /posts/1 with should", () => {
     cy.request({
