@@ -1,6 +1,6 @@
 export class CommonPage {
   visitLink(url) {
-    cy.visit(url);
+    cy.visit(url, { failOnStatusCode: false });
   }
 
   //[No parametrizable]
@@ -49,6 +49,30 @@ export class CommonPage {
 
   clickButtonByDataTestId(button) {
     cy.get(`[data-test=${button}]`).should("not.be.checked").click();
+  }
+
+  clickButtonByNameWithTimeout(buttonName, timeoutParameter) {
+    cy.contains("button", buttonName, { timeout: timeoutParameter }).click();
+  }
+
+  waitXSeconds(seconds) {
+    cy.wait(seconds);
+  }
+
+  interceptApiCallCookiesHbo() {
+    cy.intercept("**/ot_guard_logo.svg").as("hboCookies");
+  }
+  interceptApiCallAddAlias(apiCall, alias) {
+    cy.intercept(apiCall).as(alias);
+  }
+
+  waitApiCallByAlias(time, aliasApiCall) {
+    cy.wait("@" + aliasApiCall, { timeout: time });
+  }
+  clickButtonByNameWaitCookies(buttonName, apiCall) {
+    cy.intercept(apiCall).as("cookiesLoad");
+    cy.wait("@cookiesLoad", { timeout: 4000 });
+    cy.contains(buttonName).click();
   }
 
   testAccesibilityInScreen() {
