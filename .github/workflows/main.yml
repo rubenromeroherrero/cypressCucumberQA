@@ -18,6 +18,7 @@ jobs:
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         with:
+          if: always()
           name: mochawesome-report
           path: cypress/reports/html/index.html
           retention-days: 30
