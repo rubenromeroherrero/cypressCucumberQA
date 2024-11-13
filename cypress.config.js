@@ -38,8 +38,8 @@ module.exports = defineConfig({
     },
     chromeWebSecurity: false,
     specPattern: ["**/*.feature", "**/apiTest/*/*.js"],
-    //baseUrl: "https://www.saucedemo.com",
-    //baseUrlPRE: "https://www.saucedemo-pre.com",
+    baseUrl: "https://www.saucedemo.com",
+    baseUrlPRE: "https://www.saucedemo-pre.com",
     //Esta configuración, es para cuando ejecutamos varios tests, solo guardamos el nº de test que queramos en memoria
     //numTestsKeptInMemory: 2,
     // wait => va a esperar todo el tiempo que le digas
