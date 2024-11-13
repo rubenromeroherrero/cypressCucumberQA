@@ -22,7 +22,6 @@ Feature: Main test suite
         And I check that the url "include" the endpoint "/cart"
         Then I check that the "inventory-item" item "exists"
 
-    @smoke
     Scenario: Check the order after applying the filter by price
         Given I check that the selected option is "Name (A to Z)"
         When I check that the "first" product in the list has the "name" attribute with the "Sauce Labs Backpack" value

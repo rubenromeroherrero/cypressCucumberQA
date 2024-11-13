@@ -8,7 +8,7 @@
     "cy:smoke": "cypress run --env tags=@smoke --spec '**/*.feature'",
     "cy:regression": "cypress run --env tags=@regression --spec '**/*.feature'",
     "cy:login": "cypress run --env tags=@login --spec '**/*.feature'",
-    "cy:main": "cypress run --env tags=@login --spec '**/*.feature'",
+    "cy:main": "cypress run --env tags=@main --spec '**/*.feature'",
     "cy:apiTest": "cypress run --spec '**/apiTest/typicode/*.js'"
   },
   "keywords": [],
