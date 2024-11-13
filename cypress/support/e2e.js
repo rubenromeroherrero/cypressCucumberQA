@@ -17,6 +17,7 @@
 import "./commands";
 import "cypress-axe";
 import "cypress-plugin-api";
+import "cypress-mochawesome-reporter/register";
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });

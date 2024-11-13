@@ -1,0 +1,34 @@
+name: Cypress Regression Tests
+
+on:
+  schedule:
+    #Se lanza todas las noches a las 22:00h
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+jobs:
+  cypress-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress regression tests
+        run: npm run cy:regression
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/html/index.html
+          retention-days: 30
+          if-no-files-found: warn
+
+        env:
+          CI: true

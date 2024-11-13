@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
+    "test": "echo \"Error: no test specified\" && exit 1",
     "cy:smoke": "cypress run --env tags=@smoke --spec '**/*.feature'",
     "cy:regression": "cypress run --env tags=@regression --spec '**/*.feature'",
     "cy:login": "cypress run --env tags=@login --spec '**/*.feature'",
@@ -20,7 +20,9 @@
     "axe-core": "^4.10.2",
     "cypress": "^13.15.1",
     "cypress-axe": "^1.5.0",
-    "cypress-cucumber-steps": "^3.59.0"
+    "cypress-cucumber-steps": "^3.59.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-on-fix": "^1.0.3"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/step-definitions/*.js"
