@@ -28,10 +28,10 @@ jobs:
         run: npm run cy:smoke
 
       - name: Upload report artifact
+        #Genera artefacto cuando falla
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          #Genera artefacto cuando falla
-          if: always()
           name: mochawesome-report
           path: cypress/reports/html/index.html
           retention-days: 30

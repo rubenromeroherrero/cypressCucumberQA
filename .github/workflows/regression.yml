@@ -23,9 +23,10 @@ jobs:
         run: npm run cy:regression
 
       - name: Upload report artifact
+        #Genera artefacto cuando falla
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          if: always()
           name: mochawesome-report
           path: cypress/reports/html/index.html
           retention-days: 30
