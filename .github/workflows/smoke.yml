@@ -1,0 +1,33 @@
+name: Cypress Smoke Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cypress-smoke:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Cypress smoke tests
+      run: npm run cy:smoke
+      
+    - name: Upload report artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mochawesome-report
+        path: cypress/reports/html/index.html
+        retention-days: 30
+        if-no-files-found: warn
+        
+      env:
+        CI: true
