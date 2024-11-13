@@ -5,6 +5,7 @@ describe("Intercepting requests and responses", () => {
       "https://events.prd.api.max.com/dcp-svc-go/events-api/v1/events"
     ).as("hboMaxEvents");
     cy.visit("https://www.hbomax.com/");
+    //Wait until the cookies appear
     cy.wait("@hboMaxEvents", { timeout: 10000 });
     cy.contains("Aceptar todo", { timeout: 10 }).click();
   });
