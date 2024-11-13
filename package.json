@@ -9,6 +9,7 @@
     "cy:regression": "cypress run --env tags=@regression --spec '**/*.feature'",
     "cy:login": "cypress run --env tags=@login --spec '**/*.feature'",
     "cy:main": "cypress run --env tags=@main --spec '**/*.feature'",
+    "cy:accesibility": "cypress run --env tags=@accesibility --spec '**/*.feature'",
     "cy:apiTest": "cypress run --spec '**/apiTest/typicode/*.js'"
   },
   "keywords": [],
