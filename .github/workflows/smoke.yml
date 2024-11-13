@@ -1,33 +1,39 @@
 name: Cypress Smoke Tests
 
 on:
+  #Cuando se ejecuta el pipeline
   push:
   pull_request:
+  #permite ejecucion manual desde github actions
   workflow_dispatch:
 
 jobs:
+  #Nombre del job
   cypress-smoke:
+    #Crear una máquina virtual
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v4
-    
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
+      #Clonar repositorio en máquina virtual
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
 
-    - name: Run Cypress smoke tests
-      run: npm run cy:smoke
-      
-    - name: Upload report artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: mochawesome-report
-        path: cypress/reports/html/index.html
-        retention-days: 30
-        if-no-files-found: warn
-        
-      env:
-        CI: true
+      - name: Install dependencies
+        run: npm install
+
+      #Especifica el comando a ejecutar en el runner
+      - name: Run Cypress smoke tests
+        run: npm run cy:smoke
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/html/index.html
+          retention-days: 30
+          if-no-files-found: warn
+
+        env:
+          CI: true

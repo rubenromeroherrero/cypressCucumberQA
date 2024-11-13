@@ -1,3 +1,4 @@
+@regression
 Feature: Product Detail test suite
 
     Background: Login with a type of user

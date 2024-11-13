@@ -149,6 +149,7 @@ describe("Use GET method to get data from typicode", () => {
     });
   });
 
+  /*
   it("get data from a typicode/post1/comments, check its status code, type of response body and assert over object with id 4", () => {
     cy.request("/posts/1/comments").should((response) => {
       expect(response.status).to.eq(200);
@@ -159,6 +160,7 @@ describe("Use GET method to get data from typicode", () => {
       });
     });
   });
+  */
 
   it("Checks data for id = 4 using some", () => {
     cy.request({

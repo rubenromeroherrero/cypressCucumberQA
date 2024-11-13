@@ -1,3 +1,4 @@
+@regression
 Feature: Accesibility test suite
 
     Background: Visit and login wiht valid credentials
