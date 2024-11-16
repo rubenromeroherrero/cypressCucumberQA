@@ -3,7 +3,8 @@ name: Cypress Regression Tests
 on:
   schedule:
     #Se lanza todas las noches a las 22:00h
-    - cron: "0 22 * * *"
+    # - cron: "0 22 * * *"
+    workflow_dispatch:
   workflow_dispatch:
 
 jobs:
