@@ -47,7 +47,7 @@ Los módulos que se han trabajado durante la formación, han sido:
 
 - Introducción a CI/CD y su importancia en el desarrollo de software.
 - Configuración de pipelines de CI/CD con Github CI.
-- Automtazicación de la ejecución de pruebas con Cypress en entornos de CI/CD.
+- Automatización de la ejecución de pruebas con Cypress en entornos de CI/CD.
 - Mejores prácticas y consideraciones para la implementación de CI/CD con Cypress.
 
  
